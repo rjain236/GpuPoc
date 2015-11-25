@@ -1,5 +1,6 @@
 package marketdata.fx;
 
+import common.businessobject.CurrencyPair;
 import marketdata.MarketDataElement;
 import marketdata.MarketDataType;
 import org.threeten.bp.ZonedDateTime;
@@ -11,11 +12,17 @@ public class FxSpot extends MarketDataElement{
 
     protected Double value;
     protected ZonedDateTime spotDate;
+    protected CurrencyPair currencyPair;
 
-    public FxSpot(ZonedDateTime referenceDate, Double value, ZonedDateTime spotDate) {
+    public FxSpot(ZonedDateTime referenceDate, Double value, ZonedDateTime spotDate, CurrencyPair currencyPair) {
         super(referenceDate, MarketDataType.FxSpot);
         this.value = value;
         this.spotDate = spotDate;
+        this.currencyPair = currencyPair;
+    }
+
+    public CurrencyPair getCurrencyPair() {
+        return currencyPair;
     }
 
     public ZonedDateTime getSpotDate() {

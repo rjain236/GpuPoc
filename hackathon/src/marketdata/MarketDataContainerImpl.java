@@ -8,6 +8,7 @@ import marketdata.fx.FxAsset;
 import marketdata.fx.FxMatrix;
 import org.threeten.bp.ZonedDateTime;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,8 +21,11 @@ public class MarketDataContainerImpl implements MarketDataContainer {
     protected Map<CurveDefinition,RateCurve> rateCurveMap;
     protected FxMatrix fxMatrix;
 
-    public MarketDataContainerImpl(List<FxAsset> fxAssets, Collection<RateCurve> rateCurves, Currency crossCurrency, ZonedDateTime referenceDate){
-        fxMatrix = new FxMatrix(fxAssets,crossCurrency);
+    public MarketDataContainerImpl(List<FxAsset> fxAssets, Collection<RateCurve> rateCurves, ZonedDateTime referenceDate){
+        fxMatrix = new FxMatrix(fxAssets);
+        rateCurveMap = new HashMap<>();
+        for(RateCurve rateCurve:rateCurves)
+            rateCurveMap.put(rateCurve.getCurveDefinition(),rateCurve);
         this.referenceDate = referenceDate;
     }
 

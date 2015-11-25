@@ -1,5 +1,7 @@
 package marketdata.fx;
 
+import common.businessobject.Currency;
+import common.businessobject.CurrencyPair;
 import marketdata.curve.RateCurve;
 
 /**
@@ -27,5 +29,9 @@ public class FxAsset {
 
     public FxSpot getFxSpot() {
         return fxSpot;
+    }
+
+    public CurrencyPair getCurrencyPair(){
+        return fxSpot.getCurrencyPair();
     }
 }

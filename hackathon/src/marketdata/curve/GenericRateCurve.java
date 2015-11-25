@@ -56,4 +56,9 @@ public class GenericRateCurve extends MarketDataElement implements RateCurve {
         Double dcf = getDayCountCalculator().getDayCountFactor(getReferenceDate(),date);
         return curveDefinition.getCompoundingType().getRate(dcf,getDiscountFactor(date));
     }
+
+    @Override
+    public CurveDefinition getCurveDefinition() {
+        return curveDefinition;
+    }
 }

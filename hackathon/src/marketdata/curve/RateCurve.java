@@ -13,4 +13,6 @@ public interface RateCurve {
     DayCountCalculator getDayCountCalculator();
 
     double getRate(ZonedDateTime date) throws Exception;
+
+    CurveDefinition getCurveDefinition();
 }
