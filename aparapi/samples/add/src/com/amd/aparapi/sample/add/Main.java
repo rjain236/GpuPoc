@@ -61,7 +61,7 @@ public final class Main{
 
    public static void main(String[] _args) {
 
-      final int size = 10000000;
+      final int size = 1000000;
 
       final float[] a = new float[size];
       final float[] b = new float[size];
@@ -83,6 +83,7 @@ public final class Main{
       };
 
       kernel.execute(Range.create(1));
+      System.out.println("Device = " + kernel.getTargetDevice().getShortDescription());
 
       final long startTime = System.nanoTime();
       kernel.execute(Range.create(size));

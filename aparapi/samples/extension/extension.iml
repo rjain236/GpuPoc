@@ -7,7 +7,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="codegen" />
+    <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="module" module-name="com.amd.aparapi" />
+    <orderEntry type="module" module-name="codegen" />
   </component>
 </module>
