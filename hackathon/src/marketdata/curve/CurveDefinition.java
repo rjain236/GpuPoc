@@ -3,6 +3,7 @@ package marketdata.curve;
 import common.DayCountCalculator;
 import common.businessobject.Currency;
 import marketdata.interpolation.InterpolationDataBundle;
+import marketdata.interpolation.InterpolationType;
 
 /**
  * Created by rjain236 on 25/11/15.
@@ -12,7 +13,7 @@ public class CurveDefinition {
     private Currency currency;
     private String name;
     private CompoundingType compoundingType;
-    private InterpolationDataBundle.InterpolationType interpolationType;
+    private InterpolationType interpolationType;
     private DayCountCalculator dayCountCalculator;
 
     public Currency getCurrency() {
@@ -31,7 +32,7 @@ public class CurveDefinition {
         return compoundingType;
     }
 
-    public InterpolationDataBundle.InterpolationType getInterpolationType() {
+    public InterpolationType getInterpolationType() {
         return interpolationType;
     }
 

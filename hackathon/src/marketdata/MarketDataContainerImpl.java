@@ -2,14 +2,11 @@ package marketdata;
 
 import common.businessobject.Currency;
 import common.businessobject.CurrencyPair;
-import marketdata.curve.Curve;
 import marketdata.curve.CurveDefinition;
 import marketdata.curve.RateCurve;
 import marketdata.fx.FxAsset;
 import marketdata.fx.FxMatrix;
 import org.threeten.bp.ZonedDateTime;
-
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;

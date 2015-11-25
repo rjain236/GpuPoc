@@ -7,5 +7,4 @@ public class Trade {
     int tradeDate;
     int settleDate;
     int expiryDate;
-    Cashflow notional;
 }
