@@ -2,6 +2,7 @@ package com.codefellas.marketdata.fx;
 
 import com.codefellas.common.businessobject.CurrencyPair;
 import com.codefellas.marketdata.curve.RateCurve;
+import org.threeten.bp.ZonedDateTime;
 
 /**
  * Created by rjain236 on 25/11/15.
@@ -9,12 +10,12 @@ import com.codefellas.marketdata.curve.RateCurve;
 public class FxAsset {
 
     protected RateCurve foreignCurve;
-    protected RateCurve discountCurve;
+    protected RateCurve domesticCurve;
     protected FxSpot fxSpot;
 
     public FxAsset(RateCurve foreignCurve, RateCurve discountCurve,FxSpot fxSpot) {
         this.foreignCurve = foreignCurve;
-        this.discountCurve = discountCurve;
+        this.domesticCurve = discountCurve;
         this.fxSpot = fxSpot;
     }
 
@@ -22,12 +23,21 @@ public class FxAsset {
         return foreignCurve;
     }
 
-    public RateCurve getDiscountCurve() {
-        return discountCurve;
+    public RateCurve getDomesticCurve() {
+        return domesticCurve;
     }
 
     public FxSpot getFxSpot() {
         return fxSpot;
+    }
+
+    public Double getFXForward(final ZonedDateTime datetime) {
+        try {
+            return fxSpot.getValue() * foreignCurve
+                    .getDiscountFactor(datetime) / domesticCurve.getDiscountFactor(datetime);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public CurrencyPair getCurrencyPair(){

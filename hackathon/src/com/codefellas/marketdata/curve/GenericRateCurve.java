@@ -3,9 +3,9 @@ package com.codefellas.marketdata.curve;
 import com.codefellas.marketdata.MarketDataElement;
 import com.codefellas.marketdata.MarketDataType;
 import com.codefellas.common.DayCountCalculator;
-import com.codefellas.marketdata.interpolation.InterpolationDataBundle;
+import com.codefellas.common.math.interpolation.InterpolationDataBundle;
 import junit.framework.Assert;
-import com.codefellas.marketdata.interpolation.Tuple;
+import com.codefellas.common.math.interpolation.Tuple;
 import org.apache.log4j.Logger;
 import org.threeten.bp.ZonedDateTime;
 

@@ -1,4 +1,4 @@
-package com.codefellas.marketdata.interpolation;
+package com.codefellas.common.math.interpolation;
 
 import java.util.List;
 import java.util.TreeSet;

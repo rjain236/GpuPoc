@@ -1,4 +1,4 @@
-package com.codefellas.marketdata.interpolation;
+package com.codefellas.common.math.interpolation;
 
 
 import java.util.TreeSet;
@@ -9,10 +9,11 @@ import java.util.TreeSet;
 public enum InterpolationType {
     Linear{
         @Override
-        public double getInterpolatedValue(Double t, InterpolationDataBundle interpolationDateBundle) {
+        public double getInterpolatedValue(Double t, InterpolationDataBundle interpolationDateBundle)  throws Exception{
             TreeSet<Tuple> datapoints = interpolationDateBundle.getDatapoints();
             Tuple low = datapoints.floor(new Tuple(t, null));
             Tuple high = datapoints.ceiling(new Tuple(t, null));
+            if(low == null || high == null) throw new Exception("Needs Extrapolation");
             if(low==high)return low.getY();
             Double y1 = low.getY();
             Double y2 = high.getY();
@@ -23,5 +24,5 @@ public enum InterpolationType {
         }
     };
 
-    public abstract double getInterpolatedValue(Double t, InterpolationDataBundle interpolationDateBundle);
+    public abstract double getInterpolatedValue(Double t, InterpolationDataBundle interpolationDateBundle) throws Exception;
 }

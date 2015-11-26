@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="target3">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/fm-exceptions/target/fmcom-exceptions-0.0.1-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/fm-exceptions/target/fmcom-exceptions-0.0.1-SNAPSHOT-tests.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

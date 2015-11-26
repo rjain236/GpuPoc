@@ -2,7 +2,7 @@ package com.codefellas.marketdata.curve;
 
 import com.codefellas.common.DayCountCalculator;
 import com.codefellas.common.businessobject.Currency;
-import com.codefellas.marketdata.interpolation.InterpolationType;
+import com.codefellas.common.math.interpolation.InterpolationType;
 
 /**
  * Created by rjain236 on 25/11/15.

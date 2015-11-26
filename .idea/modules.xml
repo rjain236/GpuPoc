@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/aparapi/samples/add/add.iml" filepath="$PROJECT_DIR$/aparapi/samples/add/add.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aparapi/samples/blackscholes/blackscholes.iml" filepath="$PROJECT_DIR$/aparapi/samples/blackscholes/blackscholes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aparapi/test/codegen/src/codegen.iml" filepath="$PROJECT_DIR$/aparapi/test/codegen/src/codegen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aparapi/com.amd.aparapi/src/com.amd.aparapi.iml" filepath="$PROJECT_DIR$/aparapi/com.amd.aparapi/src/com.amd.aparapi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aparapi/samples/configuration/configuration.iml" filepath="$PROJECT_DIR$/aparapi/samples/configuration/configuration.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aparapi/samples/convolution/convolution.iml" filepath="$PROJECT_DIR$/aparapi/samples/convolution/convolution.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aparapi/examples/correlation-matrix/src/correlation-matrix.iml" filepath="$PROJECT_DIR$/aparapi/examples/correlation-matrix/src/correlation-matrix.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aparapi/examples/effects/effects.iml" filepath="$PROJECT_DIR$/aparapi/examples/effects/effects.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aparapi/samples/extension/extension.iml" filepath="$PROJECT_DIR$/aparapi/samples/extension/extension.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hackathon/hackathon.iml" filepath="$PROJECT_DIR$/hackathon/hackathon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aparapi/samples/info/info.iml" filepath="$PROJECT_DIR$/aparapi/samples/info/info.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aparapi/examples/javaonedemo/javaonedemo.iml" filepath="$PROJECT_DIR$/aparapi/examples/javaonedemo/javaonedemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aparapi/samples/life/life.iml" filepath="$PROJECT_DIR$/aparapi/samples/life/life.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fmcom-xlloop/src/main/main.iml" filepath="$PROJECT_DIR$/fmcom-xlloop/src/main/main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fmcom-annotations/src/main/main1.iml" filepath="$PROJECT_DIR$/fmcom-annotations/src/main/main1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fm-exceptions/src/main/main2.iml" filepath="$PROJECT_DIR$/fm-exceptions/src/main/main2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fmcom-xlloop-spring/src/main/main3.iml" filepath="$PROJECT_DIR$/fmcom-xlloop-spring/src/main/main3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aparapi/samples/mandel/mandel.iml" filepath="$PROJECT_DIR$/aparapi/samples/mandel/mandel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aparapi/samples/mdarray/mdarray.iml" filepath="$PROJECT_DIR$/aparapi/samples/mdarray/mdarray.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aparapi/samples/median/median.iml" filepath="$PROJECT_DIR$/aparapi/samples/median/median.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aparapi/examples/movie/movie.iml" filepath="$PROJECT_DIR$/aparapi/examples/movie/movie.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aparapi/examples/nbody/nbody.iml" filepath="$PROJECT_DIR$/aparapi/examples/nbody/nbody.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aparapi/examples/oopnbody/oopnbody.iml" filepath="$PROJECT_DIR$/aparapi/examples/oopnbody/oopnbody.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aparapi/samples/progress/progress.iml" filepath="$PROJECT_DIR$/aparapi/samples/progress/progress.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aparapi/test/runtime/src/runtime.iml" filepath="$PROJECT_DIR$/aparapi/test/runtime/src/runtime.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aparapi/samples/squares/squares.iml" filepath="$PROJECT_DIR$/aparapi/samples/squares/squares.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fm-exceptions/src/test/test.iml" filepath="$PROJECT_DIR$/fm-exceptions/src/test/test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fmcom-xlloop-spring/src/test/test1.iml" filepath="$PROJECT_DIR$/fmcom-xlloop-spring/src/test/test1.iml" />
+    </modules>
+  </component>
+</project>

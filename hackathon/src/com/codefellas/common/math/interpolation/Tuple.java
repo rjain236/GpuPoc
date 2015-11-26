@@ -1,4 +1,4 @@
-package com.codefellas.marketdata.interpolation;
+package com.codefellas.common.math.interpolation;
 
 import com.finmechanics.fmcom.annotations.xlserver.ExposeConstructors;
 import com.finmechanics.fmcom.annotations.xlserver.NonSpringXlService;
