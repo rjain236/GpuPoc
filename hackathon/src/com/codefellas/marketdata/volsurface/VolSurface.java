@@ -8,4 +8,6 @@ import org.threeten.bp.ZonedDateTime;
  */
 public interface VolSurface {
     double getVolatility(final ZonedDateTime datetime);
+    double getForwardVolatility(final ZonedDateTime datetime1, final ZonedDateTime datetime2);
+
 }
