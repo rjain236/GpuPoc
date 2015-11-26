@@ -1,5 +1,6 @@
 package com.codefellas.marketdata.volsurface;
 
+import com.codefellas.common.DayCountCalculator;
 import com.codefellas.common.math.interpolation.InterpolationDataBundle;
 import com.codefellas.common.math.interpolation.Tuple;
 import com.codefellas.marketdata.MarketDataElement;
@@ -33,7 +34,7 @@ public class ATMVolSurface extends MarketDataElement implements VolSurface {
         values = new TreeMap<>();
         for(Double atmvol:atmvols){
             values.put(dates.get(index), atmvol);
-            double timefraction = volSurfaceDefinition.getDayCountCalculator().getDayCountFactor
+            double timefraction = DayCountCalculator.Actual365.getDayCountFactor
                     (referenceDate, dates.get(index));
             interpolationSet.add(new Tuple(timefraction,volSurfaceDefinition.getTenorInterpolatedQuantity().getQuantity
                     (atmvols.get(index), timefraction)));
@@ -47,8 +48,8 @@ public class ATMVolSurface extends MarketDataElement implements VolSurface {
 
     @Override
     public double getVolatility(final ZonedDateTime datetime){
-        Double timefraction = volSurfaceDefinition.getDayCountCalculator().getDayCountFactor(getReferenceDate(),datetime);
-        Double volatility = 0.;
+        final double timefraction = DayCountCalculator.Actual365.getDayCountFactor(getReferenceDate(), datetime);
+        double volatility = 0.;
         try {
             volatility = volSurfaceDefinition.getTenorInterpolationType().getInterpolatedValue(timefraction,
                     interpolationDataBundle);
@@ -57,5 +58,15 @@ public class ATMVolSurface extends MarketDataElement implements VolSurface {
                     extrapolationDataBundle,null);
         }
         return volatility;
+    }
+
+    @Override
+    public double getForwardVolatility(final ZonedDateTime datetime1,final ZonedDateTime datetime2 ){
+        final double timefraction = DayCountCalculator.Actual365.getDayCountFactor(datetime1, datetime2);
+        final double totalvol1 = TenorInterpolatedQuantity.TotalVariance.getQuantity(getVolatility(datetime1),
+                DayCountCalculator.Actual365.getDayCountFactor(getReferenceDate(), datetime1));
+        final double totalvar2 = TenorInterpolatedQuantity.TotalVariance.getQuantity(getVolatility(datetime2),
+                DayCountCalculator.Actual365.getDayCountFactor(getReferenceDate(), datetime2));
+        return Math.sqrt((totalvar2-totalvol1)/timefraction);
     }
 }

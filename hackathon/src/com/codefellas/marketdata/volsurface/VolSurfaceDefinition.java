@@ -15,7 +15,6 @@ public class VolSurfaceDefinition {
     private TenorInterpolatedQuantity tenorInterpolatedQuantity;
     private ExtrapolationType tenorExtrapolationType;
     private TenorInterpolatedQuantity tenorExtrapolatedQuantity;
-    private DayCountCalculator dayCountCalculator;
 
     public CurrencyPair getCurrencyPair() {
         return currencyPair;
@@ -23,10 +22,6 @@ public class VolSurfaceDefinition {
 
     public String getName() {
         return name;
-    }
-
-    public DayCountCalculator getDayCountCalculator() {
-        return dayCountCalculator;
     }
 
     public TenorInterpolatedQuantity getTenorExtrapolatedQuantity() {
