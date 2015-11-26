@@ -17,7 +17,7 @@ public class SquareExample{
             + "  const size_t id = get_global_id(0);\n"//
             + "  out[id] = in[id]*in[id];\n"//
             + "}\n")//
-      public Squarer square(//
+      public Squarer square(//‰
             Range _range,//
             @GlobalReadWrite("in") float[] in,//
             @GlobalReadWrite("out") float[] out);
@@ -44,7 +44,7 @@ public class SquareExample{
    }
 
    public static void main(String[] args) {
-      final int size = 32;
+      final int size = 37;
       final float[] in = new float[size];
 
       for (int i = 0; i < size; i++) {

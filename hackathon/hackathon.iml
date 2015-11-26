@@ -11,5 +11,6 @@
     <orderEntry type="module" module-name="annotations" />
     <orderEntry type="module" module-name="xlloop" />
     <orderEntry type="module" module-name="xlloop-spring" />
+    <orderEntry type="module" module-name="com.amd.aparapi" />
   </component>
 </module>
