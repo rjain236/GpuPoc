@@ -28,7 +28,7 @@ public class FXBlackMCEngine extends MCEngine {
     @Override
     public double[][][] simulate(final int nPaths) throws Exception {
         Assert.assertTrue("Only single assert simulation implemented", nDimensions ==1);
-        double[][][] randomNumbers = randomGenerator.getIndependentRandomVariables(nDimensions,nPaths,timeGrid.size());
+        double[][][] randomNumbers = simulate(nPaths);
         double[][][] assetvalues = new double[nDimensions][nPaths][timeGrid.size()];
         double fxRateToday = fxasset.getFXForward(getReferenceDate());
         for (int i = 0; i < nPaths; i++) {
@@ -36,8 +36,8 @@ public class FXBlackMCEngine extends MCEngine {
             for (int j = 1; j < timeGrid.size(); j++) {
                 final double delT = timeGrid.get(j)-timeGrid.get(j-1);
                 final double fwdVol = atmVolSurface.getForwardVolatility(getDatesGrid().get(j-1),getDatesGrid().get(j));
-                final double drift = fxasset.getForeignCurve().getRate(getDatesGrid().get(j)) - fxasset
-                        .getDomesticCurve().getRate(getDatesGrid().get(j));
+                final double drift = fxasset.getDomesticCurve().getRate(getDatesGrid().get(j)) - fxasset
+                        .getForeignCurve().getRate(getDatesGrid().get(j));
                 assetvalues[0][i][j] = assetvalues[0][i][j-1]*Math.exp((drift-fwdVol*fwdVol/2.)
                         *delT+ fwdVol*Math.sqrt(delT)*randomNumbers[0][i][j] );
             }

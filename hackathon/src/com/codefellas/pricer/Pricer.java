@@ -1,7 +1,8 @@
 package com.codefellas.pricer;
 
 /**
- * Created by rjain236 on 25/11/15.
+ * Created by Lenovo on 27/11/2015.
  */
-public class Pricer {
+public interface Pricer {
+    double getPresentValue();
 }

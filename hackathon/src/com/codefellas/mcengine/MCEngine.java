@@ -6,7 +6,6 @@ import com.codefellas.common.math.random.RandomGenerator;
 import com.codefellas.payoffs.Payoff;
 import org.threeten.bp.ZonedDateTime;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -58,8 +57,8 @@ public abstract class MCEngine {
         this.timeGrid = timeGrid;
     }
 
-    public double price(int nPaths, Payoff tradePayoff) throws IOException {
-        double[][][] assetValues = randomGenerator.getIndependentRandomVariables(nDimensions,nPaths,timeGrid.size());
+    public double price(int nPaths, Payoff tradePayoff) throws Exception {
+        double[][][] assetValues = simulate(nPaths);
         Map<String, Double> pathDependentVariables = new HashMap<>();
         List<Double> payoffs = new ArrayList<Double>();
         double averagePayoff =0;
