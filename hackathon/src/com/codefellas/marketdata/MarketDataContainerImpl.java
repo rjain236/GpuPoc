@@ -5,6 +5,7 @@ import com.codefellas.marketdata.curve.RateCurve;
 import com.codefellas.marketdata.fx.FxMatrix;
 import com.codefellas.marketdata.curve.CurveDefinition;
 import com.codefellas.marketdata.fx.FxAsset;
+import com.codefellas.marketdata.fx.FxSpot;
 import com.finmechanics.fmcom.annotations.xlserver.NonSpringXlService;
 import org.threeten.bp.ZonedDateTime;
 import java.util.Collection;
@@ -38,7 +39,7 @@ public class MarketDataContainerImpl implements MarketDataContainer {
     }
 
     @Override
-    public FXSpot getFxSpot(CurrencyPair currencyPair) {
+    public FxSpot getFxSpot(CurrencyPair currencyPair) {
         return null;
     }
 

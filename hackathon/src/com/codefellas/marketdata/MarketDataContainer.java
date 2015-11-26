@@ -3,6 +3,7 @@ package com.codefellas.marketdata;
 import com.codefellas.common.businessobject.CurrencyPair;
 import com.codefellas.marketdata.curve.CurveDefinition;
 import com.codefellas.marketdata.curve.RateCurve;
+import com.codefellas.marketdata.fx.FxSpot;
 import org.threeten.bp.ZonedDateTime;
 
 /**
@@ -12,7 +13,7 @@ public interface MarketDataContainer {
 
     RateCurve getRateCurve(CurveDefinition curveDefinition) throws Exception;
 
-    FXSpot getFxSpot(CurrencyPair currencyPair);
+    FxSpot getFxSpot(CurrencyPair currencyPair);
 
     Double getForwardFxRate(ZonedDateTime date);
 

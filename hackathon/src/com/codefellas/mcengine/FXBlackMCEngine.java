@@ -4,6 +4,7 @@ import com.codefellas.common.math.random.RandomGenerator;
 import com.codefellas.marketdata.fx.FxAsset;
 import com.codefellas.marketdata.volsurface.ATMVolSurface;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -20,9 +21,9 @@ public class FXBlackMCEngine extends MCEngine {
         this.atmVolSurface = atmVolSurface;
     }
 
+
     @Override
-    public double[][][] simulate(final int nPaths) {
-        double[][][] randomNumbers = randomGenerator.getIndependentRandomVariables(nDimensions,nPaths,timeGrid.size());
-        
+    public double[][][] simulate() {
+        return new double[0][][];
     }
 }

@@ -4,6 +4,7 @@ package com.codefellas.mcengine;
 import com.codefellas.common.math.random.RandomGenerator;
 import com.codefellas.payoffs.Payoff;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,7 +27,7 @@ public abstract class MCEngine {
         this.timeGrid = timeGrid;
     }
 
-    public double price(int nPaths, Payoff tradePayoff){
+    public double price(int nPaths, Payoff tradePayoff) throws IOException {
         double[][][] assetValues = randomGenerator.getIndependentRandomVariables(nDimensions,nPaths,timeGrid.size());
         Map<String, Double> pathDependentVariables = new HashMap<>();
         List<Double> payoffs = new ArrayList<Double>();

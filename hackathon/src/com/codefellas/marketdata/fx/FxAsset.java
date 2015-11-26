@@ -38,6 +38,7 @@ public class FxAsset {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return 0d;
     }
 
     public CurrencyPair getCurrencyPair(){
