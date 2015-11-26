@@ -8,5 +8,8 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="hackathon" level="project" />
+    <orderEntry type="module" module-name="annotations" />
+    <orderEntry type="module" module-name="xlloop" />
+    <orderEntry type="module" module-name="xlloop-spring" />
   </component>
 </module>

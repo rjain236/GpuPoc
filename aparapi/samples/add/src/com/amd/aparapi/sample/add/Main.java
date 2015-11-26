@@ -40,6 +40,7 @@ package com.amd.aparapi.sample.add;
 
 import com.amd.aparapi.Kernel;
 import com.amd.aparapi.Range;
+import com.amd.aparapi.internal.kernel.KernelManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
