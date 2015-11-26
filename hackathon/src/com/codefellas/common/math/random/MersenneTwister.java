@@ -10,11 +10,11 @@ import java.io.IOException;
 public class MersenneTwister extends RandomGenerator {
 
     @Override
-    public double[][][] getIndependentRandomVariables(int nDimensions, int nPaths, int nTimeSteps) throws IOException {
+    public float[][][] getIndependentRandomVariables(int nDimensions, int nPaths, int nTimeSteps) throws IOException {
         int numberRandVar = nDimensions*nPaths*nTimeSteps;
         MersenneTwisterRandomGenerator mersenneTwisterRandomGenerator = new MersenneTwisterRandomGenerator();
         float[] out = mersenneTwisterRandomGenerator.getRandomValue(numberRandVar);
-        double[][][] result = new double[nDimensions][nPaths][nTimeSteps];
+        float[][][] result = new float[nDimensions][nPaths][nTimeSteps];
         for(int x=0;x<nDimensions;x++){
             for(int y=0;y<nPaths;y++){
                 for(int z=0;z<nTimeSteps;z++){

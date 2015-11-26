@@ -1,28 +1,27 @@
 
 package com.codefellas.mcengine;
 
+import com.amd.aparapi.internal.annotation.DocMe;
 import com.codefellas.common.DayCountCalculator;
 import com.codefellas.common.math.random.RandomGenerator;
 import com.codefellas.payoffs.Payoff;
 import org.threeten.bp.ZonedDateTime;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by rjain236 on 25/11/15.
  */
-public abstract class MCEngine {
+public abstract class MCEngine<T extends Payoff> {
 
     ZonedDateTime referenceDate;
     RandomGenerator randomGenerator;
     List<Double> timeGrid;
-    List<ZonedDateTime> datesGrid;
+    TreeSet<ZonedDateTime> datesGrid;
+    T payoff;
     int nDimensions;
 
-    public abstract double[][][] simulate(final int nPaths)  throws Exception ;
+    public abstract float[][] simulate(final int nPaths)  throws Exception ;
 
     public ZonedDateTime getReferenceDate() {
         return referenceDate;
@@ -32,39 +31,43 @@ public abstract class MCEngine {
         return randomGenerator;
     }
 
-    public List<Double> getTimeGrid() {
-        return timeGrid;
-    }
-
     public int getnDimensions() {
         return nDimensions;
     }
 
-    public List<ZonedDateTime> getDatesGrid() {
+    public TreeSet<ZonedDateTime> getDatesGrid() {
         return datesGrid;
     }
 
-    public MCEngine(ZonedDateTime referenceDate,int nDimensions, RandomGenerator randomGenerator, List<ZonedDateTime>
-            simulationDates) {
+    public MCEngine(ZonedDateTime referenceDate,int nDimensions, RandomGenerator randomGenerator, T payoff) {
         this.referenceDate = referenceDate;
         this.nDimensions = nDimensions;
         this.randomGenerator = randomGenerator;
+        this.payoff = payoff;
+        TreeSet<ZonedDateTime> zonedDateTimeTreeSet = payoff.getRequiredDate();
+        ZonedDateTime lastDate = zonedDateTimeTreeSet.last();
+        ZonedDateTime next = referenceDate;
         List<Double> timeGrid = new ArrayList<>();
-        for (int i = 0; i < simulationDates.size(); i++) {
-            timeGrid.add(DayCountCalculator.Actual365.getDayCountFactor(referenceDate, simulationDates.get(i)));
+        this.datesGrid = new TreeSet<>();
+        while (!next.isAfter(lastDate)){
+            datesGrid.add(next);
+            timeGrid.add(DayCountCalculator.Actual365.getDayCountFactor(referenceDate, next));
+            next = next.plusDays(1l);
         }
-        this.datesGrid = simulationDates;
         this.timeGrid = timeGrid;
     }
 
-    public double price(int nPaths, Payoff tradePayoff) throws Exception {
-        double[][][] assetValues = simulate(nPaths);
+    public double price(int nPaths) throws Exception {
+        float[][] assetValues = simulate(nPaths);
         Map<String, Double> pathDependentVariables = new HashMap<>();
-        List<Double> payoffs = new ArrayList<Double>();
         double averagePayoff =0;
         for (int i = 0; i < nPaths; i++) {
-            averagePayoff = tradePayoff.calculatePayoff(assetValues[0][i], pathDependentVariables);
+            averagePayoff += payoff.calculatePayoff(assetValues[i], pathDependentVariables);
         }
         return averagePayoff/nPaths;
+    }
+
+    public T getPayoff() {
+        return payoff;
     }
 }

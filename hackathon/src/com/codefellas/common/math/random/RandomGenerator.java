@@ -7,5 +7,5 @@ import java.io.IOException;
  */
 public abstract class RandomGenerator {
 
-    abstract public double[][][] getIndependentRandomVariables(int nDimensions, int nPaths, int nTimeSteps) throws IOException;
+    abstract public float[][][] getIndependentRandomVariables(int nDimensions, int nPaths, int nTimeSteps) throws IOException;
 }

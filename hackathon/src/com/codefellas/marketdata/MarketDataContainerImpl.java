@@ -1,11 +1,13 @@
 package com.codefellas.marketdata;
 
+import com.codefellas.common.businessobject.Currency;
 import com.codefellas.common.businessobject.CurrencyPair;
 import com.codefellas.marketdata.curve.RateCurve;
 import com.codefellas.marketdata.fx.FxMatrix;
 import com.codefellas.marketdata.curve.CurveDefinition;
 import com.codefellas.marketdata.fx.FxAsset;
 import com.codefellas.marketdata.fx.FxSpot;
+import com.codefellas.marketdata.volsurface.VolSurface;
 import com.finmechanics.fmcom.annotations.xlserver.NonSpringXlService;
 import org.threeten.bp.ZonedDateTime;
 import java.util.Collection;
@@ -21,14 +23,16 @@ public class MarketDataContainerImpl implements MarketDataContainer {
 
     protected ZonedDateTime referenceDate;
     protected Map<CurveDefinition,RateCurve> rateCurveMap;
+    protected Map<CurrencyPair,VolSurface> volSurfaceMap;
     protected FxMatrix fxMatrix;
 
-    public MarketDataContainerImpl(List<FxAsset> fxAssets, Collection<RateCurve> rateCurves, ZonedDateTime referenceDate){
+    public MarketDataContainerImpl(List<FxAsset> fxAssets, Collection<RateCurve> rateCurves, ZonedDateTime referenceDate, Map<CurrencyPair,VolSurface> volSurfaceMap){
         fxMatrix = new FxMatrix(fxAssets);
         rateCurveMap = new HashMap<>();
         for(RateCurve rateCurve:rateCurves)
             rateCurveMap.put(rateCurve.getCurveDefinition(),rateCurve);
         this.referenceDate = referenceDate;
+        this.volSurfaceMap = volSurfaceMap;
     }
 
     @Override
@@ -44,12 +48,23 @@ public class MarketDataContainerImpl implements MarketDataContainer {
     }
 
     @Override
-    public Double getForwardFxRate(ZonedDateTime date) {
-        return null;
+    public Double getForwardFxRate(ZonedDateTime date, CurrencyPair currencyPair) {
+        FxAsset fxAsset = fxMatrix.getFxAsset(currencyPair);
+        return fxAsset.getFXForward(date);
     }
 
     @Override
     public ZonedDateTime getReferenceDate() {
         return null;
+    }
+
+    @Override
+    public Double getVolatility(ZonedDateTime date, CurrencyPair currencyPair) {
+        return volSurfaceMap.get(currencyPair).getVolatility(date);
+    }
+
+    @Override
+    public double getForwardVolatility(ZonedDateTime datetime1, ZonedDateTime datetime2, CurrencyPair currencyPair) {
+        return volSurfaceMap.get(currencyPair).getForwardVolatility(datetime1,datetime2);
     }
 }

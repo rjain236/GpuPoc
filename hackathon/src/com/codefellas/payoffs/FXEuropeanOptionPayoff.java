@@ -6,11 +6,13 @@ import com.codefellas.common.commonobjects.CurrencyAmount;
 import org.threeten.bp.ZonedDateTime;
 
 import java.util.Map;
+import java.util.TreeSet;
 
 /**
  * Created by rjain236 on 25/11/15.
  */
 public class FXEuropeanOptionPayoff extends FXPayoff {
+
     protected final double strike;
     protected final ZonedDateTime expiryDate;
 
@@ -24,7 +26,22 @@ public class FXEuropeanOptionPayoff extends FXPayoff {
     }
 
     @Override
-    public double calculatePayoff(double[] assetValues, Map<String, Double> pathDependentVariables) {
-        return Math.max(assetValues[0] - strike,0);
+    public double calculatePayoff(float[] assetValues, Map<String, Double> pathDependentVariables) {
+        return Math.max(assetValues[assetValues.length-1] - strike,0);
+    }
+
+    @Override
+    public TreeSet<ZonedDateTime> getRequiredDate() {
+        TreeSet<ZonedDateTime> zonedDateTimes = new TreeSet<>();
+        zonedDateTimes.add(expiryDate);
+        return zonedDateTimes;
+    }
+
+    public double getStrike() {
+        return strike;
+    }
+
+    public ZonedDateTime getExpiryDate() {
+        return expiryDate;
     }
 }

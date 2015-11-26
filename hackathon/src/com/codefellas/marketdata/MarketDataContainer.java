@@ -15,7 +15,12 @@ public interface MarketDataContainer {
 
     FxSpot getFxSpot(CurrencyPair currencyPair);
 
-    Double getForwardFxRate(ZonedDateTime date);
+    Double getForwardFxRate(ZonedDateTime date, CurrencyPair currencyPair);
 
     ZonedDateTime getReferenceDate();
+
+    Double getVolatility(ZonedDateTime date, CurrencyPair currencyPair);
+
+    double getForwardVolatility(final ZonedDateTime datetime1, final ZonedDateTime datetime2, CurrencyPair currencyPair);
+
 }

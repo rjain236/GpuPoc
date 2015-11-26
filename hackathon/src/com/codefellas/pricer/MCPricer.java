@@ -1,25 +1,38 @@
 package com.codefellas.pricer;
 
 import com.codefellas.marketdata.MarketDataContainer;
+import com.codefellas.marketdata.curve.CurveDefinition;
 import com.codefellas.mcengine.MCEngine;
 import com.codefellas.payoffs.Payoff;
 
 /**
  * Created by rjain236 on 25/11/15.
  */
-public class MCPricer implements Pricer{
-    MarketDataContainer marketData;
-    Payoff payoff;
-    MCEngine mcEngine;
+public abstract class MCPricer<T extends MCEngine> implements Pricer{
 
-    public MCPricer(MarketDataContainer marketData, Payoff payoff, MCEngine mcEngine) {
+    protected MarketDataContainer marketData;
+    protected T mcEngine;
+    protected int nPaths;
+    protected CurveDefinition discountCurve;
+
+    public MCPricer(MarketDataContainer marketData, int nPaths, CurveDefinition discountCurve) {
         this.marketData = marketData;
-        this.payoff = payoff;
-        this.mcEngine = mcEngine;
+        this.nPaths = nPaths;
     }
 
-    @Override
-    public double getPresentValue() {
-        return 0;
+    public CurveDefinition getDiscountCurve() {
+        return discountCurve;
+    }
+
+    public MarketDataContainer getMarketData() {
+        return marketData;
+    }
+
+    public T getMcEngine() {
+        return mcEngine;
+    }
+
+    public int getnPaths() {
+        return nPaths;
     }
 }
