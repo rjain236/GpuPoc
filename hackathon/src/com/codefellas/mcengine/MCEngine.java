@@ -1,8 +1,7 @@
 
 package com.codefellas.mcengine;
 
-import com.amd.aparapi.internal.annotation.DocMe;
-import com.codefellas.common.DayCountCalculator;
+import com.codefellas.common.daycountcalculator.Actual365Calculator;
 import com.codefellas.common.math.random.RandomGenerator;
 import com.codefellas.payoffs.Payoff;
 import org.threeten.bp.ZonedDateTime;
@@ -51,7 +50,7 @@ public abstract class MCEngine<T extends Payoff> {
         this.datesGrid = new TreeSet<>();
         while (!next.isAfter(lastDate)){
             datesGrid.add(next);
-            timeGrid.add(DayCountCalculator.Actual365.getDayCountFactor(referenceDate, next));
+            timeGrid.add(new Actual365Calculator().getDayCountFactor(referenceDate, next));
             next = next.plusDays(1l);
         }
         this.timeGrid = timeGrid;

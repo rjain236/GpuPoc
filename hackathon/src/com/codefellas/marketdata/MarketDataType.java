@@ -6,5 +6,6 @@ package com.codefellas.marketdata;
 public enum MarketDataType {
     RateCurve,
     FxSpot,
-    FxAsset;
+    FxAsset,
+    FxVolSurface;
 }

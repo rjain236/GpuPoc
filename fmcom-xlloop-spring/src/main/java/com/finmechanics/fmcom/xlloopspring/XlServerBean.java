@@ -142,7 +142,7 @@ public class XlServerBean implements ApplicationContextAware, SmartLifecycle {
         cfh.add(firh);
 
     NonSpringFunctionHandler staticNonFmClassHandlers = new NonSpringFunctionHandler(converter.getInstance());
-//    staticNonFmClassHandlers.addBean("", ZonedDateTime.class.getName());
+    staticNonFmClassHandlers.addBean("", ZonedDateTime.class.getName());
     staticNonFmClassHandlers.addBean("", Date.class.getName());
 //    staticNonFmClassHandlers.addBean("", BigDecimal.class.getName());
     firh.add(staticNonFmClassHandlers.getFunctions());

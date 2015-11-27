@@ -1,12 +1,17 @@
 package com.codefellas.marketdata.curve;
 
-import com.codefellas.common.DayCountCalculator;
 import com.codefellas.common.businessobject.Currency;
+import com.codefellas.common.daycountcalculator.DayCountCalculator;
 import com.codefellas.common.math.interpolation.InterpolationType;
+import com.codefellas.marketdata.curve.compounding.CompoundingType;
+import com.finmechanics.fmcom.annotations.xlserver.ExposeConstructors;
+import com.finmechanics.fmcom.annotations.xlserver.NonSpringXlService;
 
 /**
  * Created by rjain236 on 25/11/15.
  */
+@ExposeConstructors
+@NonSpringXlService
 public class CurveDefinition {
 
     private Currency currency;
@@ -14,6 +19,14 @@ public class CurveDefinition {
     private CompoundingType compoundingType;
     private InterpolationType interpolationType;
     private DayCountCalculator dayCountCalculator;
+
+    public CurveDefinition(Currency currency, String name, CompoundingType compoundingType, InterpolationType interpolationType, DayCountCalculator dayCountCalculator) {
+        this.currency = currency;
+        this.name = name;
+        this.compoundingType = compoundingType;
+        this.interpolationType = interpolationType;
+        this.dayCountCalculator = dayCountCalculator;
+    }
 
     public Currency getCurrency() {
         return currency;

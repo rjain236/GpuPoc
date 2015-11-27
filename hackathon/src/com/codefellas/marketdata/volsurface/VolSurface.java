@@ -1,6 +1,7 @@
 package com.codefellas.marketdata.volsurface;
 
 
+import com.codefellas.common.businessobject.CurrencyPair;
 import org.threeten.bp.ZonedDateTime;
 
 /**
@@ -9,5 +10,6 @@ import org.threeten.bp.ZonedDateTime;
 public interface VolSurface {
     double getVolatility(final ZonedDateTime datetime);
     double getForwardVolatility(final ZonedDateTime datetime1, final ZonedDateTime datetime2);
+    CurrencyPair getCurrencyPair();
 
 }

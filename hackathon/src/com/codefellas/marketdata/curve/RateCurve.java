@@ -1,6 +1,6 @@
 package com.codefellas.marketdata.curve;
 
-import com.codefellas.common.DayCountCalculator;
+import com.codefellas.common.daycountcalculator.DayCountCalculator;
 import org.threeten.bp.ZonedDateTime;
 
 /**

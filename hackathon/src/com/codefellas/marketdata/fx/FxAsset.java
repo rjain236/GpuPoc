@@ -2,11 +2,15 @@ package com.codefellas.marketdata.fx;
 
 import com.codefellas.common.businessobject.CurrencyPair;
 import com.codefellas.marketdata.curve.RateCurve;
+import com.finmechanics.fmcom.annotations.xlserver.ExposeConstructors;
+import com.finmechanics.fmcom.annotations.xlserver.NonSpringXlService;
 import org.threeten.bp.ZonedDateTime;
 
 /**
  * Created by rjain236 on 25/11/15.
  */
+@NonSpringXlService
+@ExposeConstructors
 public class FxAsset {
 
     protected RateCurve foreignCurve;
