@@ -17,6 +17,7 @@ public abstract class McPricer<T extends McEngine> implements Pricer{
     public McPricer(MarketDataContainer marketData, int nPaths, CurveDefinition discountCurve) {
         this.marketData = marketData;
         this.nPaths = nPaths;
+        this.discountCurve = discountCurve;
     }
 
     public CurveDefinition getDiscountCurve() {

@@ -1,10 +1,15 @@
 package com.codefellas.common.commonobjects;
 
+import com.finmechanics.fmcom.annotations.xlserver.ExposeConstructors;
+import com.finmechanics.fmcom.annotations.xlserver.NonSpringXlService;
+
 import java.util.*;
 
 /**
  * Created by rjain236 on 25/11/15.
  */
+@NonSpringXlService
+@ExposeConstructors
 public class CurrencyAmount extends Addable<CurrencyAmount>{
 
     Map<com.codefellas.common.businessobject.Currency,Double> currencyValueMap;

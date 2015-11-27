@@ -31,7 +31,7 @@ public class FxEuropeanOptionPayoff extends FxPayoff {
 
     @Override
     public double calculatePayoff(float[] assetValues, Map<String, Double> pathDependentVariables) {
-        return Math.max(assetValues[assetValues.length-1] - strike,0);
+        return notional.getValue(notional.getCurrencies().iterator().next())*Math.max(assetValues[assetValues.length-2] - strike,0);
     }
 
     @Override

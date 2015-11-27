@@ -82,7 +82,7 @@ public class MarketDataContainerImpl implements MarketDataContainer {
 
     @Override
     public ZonedDateTime getReferenceDate() {
-        return null;
+        return referenceDate;
     }
 
     @Override

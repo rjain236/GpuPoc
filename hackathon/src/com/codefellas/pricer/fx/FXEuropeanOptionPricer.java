@@ -4,11 +4,15 @@ import com.codefellas.marketdata.MarketDataContainer;
 import com.codefellas.marketdata.curve.CurveDefinition;
 import com.codefellas.payoffs.FxEuropeanOptionPayoff;
 import com.codefellas.payoffs.FxPayoff;
+import com.finmechanics.fmcom.annotations.xlserver.ExposeConstructors;
+import com.finmechanics.fmcom.annotations.xlserver.NonSpringXlService;
 import org.threeten.bp.ZonedDateTime;
 
 /**
  * Created by rjain236 on 27/11/15.
  */
+@NonSpringXlService
+@ExposeConstructors
 public class FxEuropeanOptionPricer extends FxMcPricer {
 
     public FxEuropeanOptionPricer(MarketDataContainer marketData, FxEuropeanOptionPayoff payoff, int nPaths, CurveDefinition discountCurve) {

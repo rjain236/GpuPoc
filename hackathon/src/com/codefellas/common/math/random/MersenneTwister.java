@@ -15,10 +15,12 @@ public class MersenneTwister extends RandomGenerator {
         MersenneTwisterRandomGenerator mersenneTwisterRandomGenerator = new MersenneTwisterRandomGenerator();
         float[] out = mersenneTwisterRandomGenerator.getRandomValue(numberRandVar);
         float[][][] result = new float[nDimensions][nPaths][nTimeSteps];
+        int count =0;
         for(int x=0;x<nDimensions;x++){
             for(int y=0;y<nPaths;y++){
                 for(int z=0;z<nTimeSteps;z++){
-                    result[x][y][z] = out[nDimensions*nPaths*x + nPaths*y + z];
+                    result[x][y][z] = out[count];
+                    count++;
                 }
             }
         }
