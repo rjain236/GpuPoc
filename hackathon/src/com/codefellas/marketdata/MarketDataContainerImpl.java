@@ -2,11 +2,13 @@ package com.codefellas.marketdata;
 
 import com.codefellas.common.businessobject.Currency;
 import com.codefellas.common.businessobject.CurrencyPair;
+import com.codefellas.marketdata.curve.GenericRateCurve;
 import com.codefellas.marketdata.curve.RateCurve;
 import com.codefellas.marketdata.fx.FxMatrix;
 import com.codefellas.marketdata.curve.CurveDefinition;
 import com.codefellas.marketdata.fx.FxAsset;
 import com.codefellas.marketdata.fx.FxSpot;
+import com.codefellas.marketdata.volsurface.AtmVolSurface;
 import com.codefellas.marketdata.volsurface.VolSurface;
 import com.finmechanics.fmcom.annotations.xlserver.ExposeConstructors;
 import com.finmechanics.fmcom.annotations.xlserver.NonSpringXlService;
@@ -42,6 +44,22 @@ public class MarketDataContainerImpl implements MarketDataContainer {
             if(volSurface == null)continue;
             volSurfaceMap.put(volSurface.getCurrencyPair(),volSurface);
         }
+    }
+
+    @Override
+    public void setReferenceDate(ZonedDateTime referenceDate) {
+        this.referenceDate = referenceDate;
+        for (Map.Entry<CurveDefinition,RateCurve> e:rateCurveMap.entrySet()){
+            ((GenericRateCurve)e.getValue()).setReferenceDate(referenceDate);
+        }
+        for (Map.Entry<CurrencyPair,VolSurface> e:volSurfaceMap.entrySet()){
+            ((AtmVolSurface)e.getValue()).setReferenceDate(referenceDate);
+        }
+    }
+
+    @Override
+    public void setFxSpot(CurrencyPair currencyPair, double fxSpotRate) {
+        fxMatrix.setFxSpot(currencyPair,fxSpotRate);
     }
 
     @Override

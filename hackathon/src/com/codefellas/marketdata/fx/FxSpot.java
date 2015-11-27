@@ -36,4 +36,8 @@ public class FxSpot extends MarketDataElement {
     public Double getValue() {
         return value;
     }
+
+    public void setValue(Double value) {
+        this.value = value;
+    }
 }

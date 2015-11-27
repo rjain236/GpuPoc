@@ -15,13 +15,13 @@ import java.util.TreeSet;
  */
 @ExposeConstructors
 @NonSpringXlService
-public class FXEuropeanOptionPayoff extends FXPayoff {
+public class FxEuropeanOptionPayoff extends FxPayoff {
 
     protected final double strike;
     protected final ZonedDateTime expiryDate;
 
-    public FXEuropeanOptionPayoff(double notional, Currency notionalCcy, ZonedDateTime settleDate, CurrencyPair
-            currencyPair, double strike, ZonedDateTime  expiryDate){
+    public FxEuropeanOptionPayoff(double notional, Currency notionalCcy, ZonedDateTime settleDate, CurrencyPair
+            currencyPair, double strike, ZonedDateTime expiryDate){
         this.strike = strike;
         this.expiryDate = expiryDate;
         this.currencyPair = currencyPair;

@@ -11,7 +11,7 @@ import java.util.*;
 /**
  * Created by rjain236 on 25/11/15.
  */
-public abstract class MCEngine<T extends Payoff> {
+public abstract class McEngine<T extends Payoff> {
 
     ZonedDateTime referenceDate;
     RandomGenerator randomGenerator;
@@ -20,7 +20,7 @@ public abstract class MCEngine<T extends Payoff> {
     T payoff;
     int nDimensions;
 
-    public abstract float[][] simulate(final int nPaths)  throws Exception ;
+    public abstract float[][][] simulate(final int nPaths, float[] initialStates) throws Exception ;
 
     public ZonedDateTime getReferenceDate() {
         return referenceDate;
@@ -38,7 +38,7 @@ public abstract class MCEngine<T extends Payoff> {
         return datesGrid;
     }
 
-    public MCEngine(ZonedDateTime referenceDate,int nDimensions, RandomGenerator randomGenerator, T payoff) {
+    public McEngine(ZonedDateTime referenceDate, int nDimensions, RandomGenerator randomGenerator, T payoff) {
         this.referenceDate = referenceDate;
         this.nDimensions = nDimensions;
         this.randomGenerator = randomGenerator;
@@ -56,14 +56,17 @@ public abstract class MCEngine<T extends Payoff> {
         this.timeGrid = timeGrid;
     }
 
-    public double price(int nPaths) throws Exception {
-        float[][] assetValues = simulate(nPaths);
+    public double[] price(float[] initialAssetStates,int nPaths) throws Exception {
+        float[][][] assetValues = simulate(nPaths,initialAssetStates);
         Map<String, Double> pathDependentVariables = new HashMap<>();
-        double averagePayoff =0;
-        for (int i = 0; i < nPaths; i++) {
-            averagePayoff += payoff.calculatePayoff(assetValues[i], pathDependentVariables);
+        double[] averagePayoff = new double[initialAssetStates.length];
+        for (int j = 0; j < initialAssetStates.length; j++) {
+            for (int i = 0; i < nPaths; i++) {
+                averagePayoff[j] += payoff.calculatePayoff(assetValues[j][i], pathDependentVariables);
+            }
+            averagePayoff[j] /=nPaths;
         }
-        return averagePayoff/nPaths;
+        return averagePayoff;
     }
 
     public T getPayoff() {

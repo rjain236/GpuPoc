@@ -1,6 +1,9 @@
 package com.codefellas.marketdata.fx;
 
 import com.codefellas.common.businessobject.CurrencyPair;
+import com.codefellas.marketdata.volsurface.AtmVolSurface;
+import com.codefellas.marketdata.volsurface.VolSurface;
+import org.threeten.bp.ZonedDateTime;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -24,5 +27,17 @@ public class FxMatrix {
 
     public FxAsset getFxAsset(CurrencyPair currencyPair){
         return fxAssetMap.get(currencyPair);
+    }
+
+    public void setReferenceDate(ZonedDateTime referenceDate){
+        for (Map.Entry<CurrencyPair,FxAsset> e:fxAssetMap.entrySet()){
+            ((FxAsset)e.getValue()).setReferenceDate(referenceDate);
+        }
+    }
+
+    public void setFxSpot(CurrencyPair currencyPair, double fxSpotRate){
+        for (Map.Entry<CurrencyPair,FxAsset> e:fxAssetMap.entrySet()){
+            ((FxAsset)e.getValue()).setFxSpot(fxSpotRate);
+        }
     }
 }

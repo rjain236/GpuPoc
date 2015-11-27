@@ -22,16 +22,15 @@ import java.util.*;
  */
 @NonSpringXlService
 @ExposeConstructors
-public class ATMVolSurface extends MarketDataElement implements VolSurface {
-
+public class AtmVolSurface extends MarketDataElement implements VolSurface {
     protected TreeMap<ZonedDateTime,Double> values;
     protected InterpolationDataBundle extrapolationDataBundle;
     protected InterpolationDataBundle interpolationDataBundle;
     protected VolSurfaceDefinition volSurfaceDefinition;
 
-    public static final Logger logger = Logger.getLogger(ATMVolSurface.class);
+    public static final Logger logger = Logger.getLogger(AtmVolSurface.class);
 
-    public ATMVolSurface(ZonedDateTime referenceDate, Collection<ZonedDateTime> dates,
+    public AtmVolSurface(ZonedDateTime referenceDate, Collection<ZonedDateTime> dates,
                          Collection<Double> atmvols, VolSurfaceDefinition volSurfaceDefinition) {
         super(referenceDate, MarketDataType.FxVolSurface);
         Assert.assertTrue("Need equal length pillars and values", dates.size() == atmvols.size());

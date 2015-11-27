@@ -1,6 +1,7 @@
 package com.codefellas.marketdata.fx;
 
 import com.codefellas.common.businessobject.CurrencyPair;
+import com.codefellas.marketdata.curve.GenericRateCurve;
 import com.codefellas.marketdata.curve.RateCurve;
 import com.finmechanics.fmcom.annotations.xlserver.ExposeConstructors;
 import com.finmechanics.fmcom.annotations.xlserver.NonSpringXlService;
@@ -47,5 +48,14 @@ public class FxAsset {
 
     public CurrencyPair getCurrencyPair(){
         return fxSpot.getCurrencyPair();
+    }
+
+    public void setReferenceDate(ZonedDateTime referenceDate){
+        ((GenericRateCurve)foreignCurve).setReferenceDate(referenceDate);
+        ((GenericRateCurve)domesticCurve).setReferenceDate(referenceDate);
+    }
+
+    public void setFxSpot(double fxSpotRate){
+        this.fxSpot.setValue(fxSpotRate);
     }
 }
